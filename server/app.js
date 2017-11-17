@@ -22,23 +22,6 @@ app.use(expressMongoDb(process.env.DB_URI));
 
 app.use('/api/db', dbApi);
 
-// react routing (production)
-var reactBase = path.resolve(__dirname, '../web/build')
-if (!fs.existsSync(reactBase)) {
-  throw 'missing build dir; to fix: run `npm run build` in web dir'
-}
-
-// react static files (production)
-app.use('/static', express.static(path.join(reactBase, 'static')));
-
-// by default, serve index.html (production)
-var indexFile = path.join(reactBase, 'index.html')
-app.use(function(req, res, next) {
-  res.sendFile(indexFile, function(err) {
-    next(err);
-  });
-});
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   let err = new Error('Not Found');

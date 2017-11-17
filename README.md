@@ -1,15 +1,10 @@
-# React Project Template
+# React Native Project Template
 
 Features:
 
 * based on <https://github.com/umn-5117-f17/express-project-template>
-* based on <https://github.com/facebookincubator/create-react-app>
-* includes bulma css
-* includes <https://github.com/ReactTraining/react-router>
-
-Example code:
-
-* mongodb
+* based on <https://expo.io/>
+* includes <https://reactnavigation.org/>
 
 ## setup and run in development
 
