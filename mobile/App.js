@@ -6,32 +6,32 @@ import {
   Text,
   View,
 } from 'react-native';
+import navigation, { StackNavigator } from 'react-navigation';
 
+import HomeScreen from './screens/HomeScreen';
+import FetchDemoScreen from './screens/FetchDemoScreen';
+
+const RootNavigator = StackNavigator({
+  Home: {
+    screen: HomeScreen,
+    navigationOptions: {
+      headerTitle: 'Home',
+    },
+  },
+  FetchDemo: {
+    screen: FetchDemoScreen,
+    navigationOptions: {
+      headerTitle: 'Fetch Demo',
+    },
+  },
+});
 
 class App extends React.Component {
 
   render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.title}>Hello, world!</Text>
-      </View>
-    );
+    return <RootNavigator />
   }
 
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    textAlign: 'center',
-    marginTop: 40,
-  },
-});
 
 Expo.registerRootComponent(App);

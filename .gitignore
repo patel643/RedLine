@@ -1,10 +1,6 @@
 # heroku local config
 /.env
 
-# mobile
-mobile/node_modules/**/*
-mobile/.expo/*
-
 # Logs
 logs
 *.log
@@ -35,3 +31,6 @@ node_modules
 
 # Debug log from npm
 npm-debug.log
+
+# mobile
+.expo

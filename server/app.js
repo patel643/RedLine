@@ -20,6 +20,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(expressMongoDb(process.env.DB_URI));
 
+app.use('/', function(req, res, next) {
+  res.json({'message': 'hello, world!'});
+});
+
 app.use('/api/db', dbApi);
 
 // catch 404 and forward to error handler

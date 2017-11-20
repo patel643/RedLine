@@ -21,7 +21,6 @@ Features:
 DEBUG=app:*
 
 PORT=3000
-EXPRESS_PORT=3001
 
 # these must match the values from web/.env
 AUTH0_DOMAIN=TODO.auth0.com

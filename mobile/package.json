@@ -9,7 +9,8 @@
     "@expo/vector-icons": "~5.2.0",
     "expo": "^22.0.0",
     "react": "16.0.0-beta.5",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-22.0.2.tar.gz"
+    "react-native": "https://github.com/expo/react-native/archive/sdk-22.0.2.tar.gz",
+    "react-navigation": "^1.0.0-beta.19"
   },
   "devDependencies": {
     "eslint": "^4.7.2",

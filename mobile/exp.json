@@ -1,7 +1,7 @@
 {
-  "name": "hw4",
-  "description": "5117 Module 4 Homework",
-  "slug": "5117-hw4",
+  "name": "react native project template",
+  "description": "React native project template, for module 4",
+  "slug": "5117-rnpt",
   "privacy": "public",
   "sdkVersion": "22.0.0",
   "version": "0.0.0",
