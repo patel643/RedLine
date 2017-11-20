@@ -11,10 +11,12 @@ Features:
 * install [heroku command line app](https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up)
 * create account at [mlab](https://mlab.com/)
 * create account at [auth0](https://auth0.com)
-    * create a client
-    * In the APIs section of the Auth0 dashboard, click Create API
-      (pick any name, any identifier)
-* edit file `web/.env` to configure react+auth0, and commit the changes
+    * create a (regular web app) client
+    * add a callback URL: `https://auth.expo.io/@EXPO_USERNAME/5117-rnpt` where
+      5117-rnpt should match your "slug" is defined in mobile/exp.json
+    * see <https://github.com/expo/auth0-example> for more docs
+* edit file `mobile/config.js` to configure mobile app (see items marked TODO),
+  and commit the changes
 * create file `.env` in root of project to configure express, something like this:
 
 ```
@@ -36,12 +38,15 @@ DB_URI=mongodb://5117:5117iscool@ec2-54-175-174-41.compute-1.amazonaws.com:80/51
     npm run dev
 ```
 
+* open `mobile` folder in Expo XDE, open client on device or emulator
+
+
 ## deploy to heroku
 
 * run these commands (one-time setup, or whenever these values need to change):
 
 ```
-    # add all of the config variables from .env, except DEBUG, PORT, and EXPRESS_PORT
+    # add all of the config variables from .env, except DEBUG and PORT
     heroku config:set AUTH0_DOMAIN=(foo).auth0.com AUTH0_API_ID=(bar)
 ```
 

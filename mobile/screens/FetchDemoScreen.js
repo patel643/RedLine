@@ -19,7 +19,7 @@ class FetchDemoScreen extends React.Component {
 
   componentDidMount() {
 
-    fetch(`${config.API_BASE}/`)
+    fetch(`${config.API_BASE}/hello-world`)
       .then((response) => response.json())
       .then((responseJson) => {
         console.log('fetched:', JSON.stringify(responseJson));
@@ -31,7 +31,6 @@ class FetchDemoScreen extends React.Component {
   }
 
   render() {
-
     return (
       <View>
         <Text>fetch demo</Text>

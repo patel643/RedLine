@@ -2,7 +2,11 @@
 console.log(`loading configuration (dev mode=${__DEV__})`);
 
 const config = {
-  API_BASE: 'TODO'
+  // e.g., http://foo.herokuapp.com
+  API_BASE: 'TODO',
+
+  AUTH0_CLIENT_ID: 'iLFQMMACnPkGDQdB65DxSdifHuiALXqQ',
+  AUTH0_DOMAIN: 'https://maxharp3r.auth0.com',
 }
 
 const devModeOverrides = {
