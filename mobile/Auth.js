@@ -115,7 +115,10 @@ function withAuth(WrappedComponent) {
       } catch (error) {
         console.error('Error logging out', error);
       }
-      this.setState({ profile: DEFAULT_PROFILE });
+      this.setState({
+        profile: DEFAULT_PROFILE,
+        accessToken: DEFAULT_ACCESS_TOKEN
+      });
     }
 
     /**

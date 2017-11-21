@@ -6,6 +6,10 @@ import {
   View,
 } from 'react-native';
 
+// example of using an expo Component
+// https://docs.expo.io/versions/latest/sdk/keep-awake.html
+import { KeepAwake } from 'expo';
+
 
 class HomeScreen extends React.Component {
 
@@ -15,14 +19,23 @@ class HomeScreen extends React.Component {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>home screen</Text>
-        <Button
-          onPress={() => this.props.navigation.navigate('FetchDemo')}
-          title="fetch demo"
-        />
-        <Button
-          onPress={() => this.props.navigation.navigate('AuthDemo')}
-          title="auth demo"
-        />
+        <View style={styles.spaced}>
+          <Button
+            onPress={() => this.props.navigation.navigate('FetchDemo')}
+            title="fetch demo"
+          />
+        </View>
+
+        <View style={styles.spaced}>
+          <Button
+            onPress={() => this.props.navigation.navigate('AuthDemo')}
+            title="auth demo"
+            style={styles.spaced}
+          />
+        </View>
+
+        <Text style={styles.spaced}>(staying awake)</Text>
+        <KeepAwake />
       </View>
     )
   }
@@ -40,8 +53,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     marginTop: 40,
-    marginBottom: 40,
   },
+  spaced: {
+    marginTop: 20,
+  }
 });
 
 export default HomeScreen;
