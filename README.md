@@ -24,7 +24,7 @@ DEBUG=app:*
 
 PORT=3000
 
-# these must match the values from web/.env
+# these must match the values from mobile/config.js
 AUTH0_DOMAIN=TODO.auth0.com
 AUTH0_API_ID=TODO
 
@@ -39,6 +39,12 @@ DB_URI=mongodb://5117:5117iscool@ec2-54-175-174-41.compute-1.amazonaws.com:80/51
 ```
 
 * open `mobile` folder in Expo XDE, open client on device or emulator
+
+* make sure you can run both demos. If there's an error in auth, then double-
+  check your configuration values. If there's an error in fetch, then try switching
+  expo xde to "lan" and using your computer's IP address instead of localhost
+  (and, ensure if you're using a device, that your computer and your device
+  are on the same network).
 
 
 ## deploy to heroku

@@ -63,19 +63,22 @@ function withAuth(WrappedComponent) {
     }
 
     /**
-     * summon the auth0 login interface
+     * summon the auth0 login interface; store the results to AsyncStorage.
      */
     async login() {
       const redirectUrl = AuthSession.getRedirectUrl();
-      const result = await AuthSession.startAsync({
-        authUrl: `${config.AUTH0_DOMAIN}/authorize` + toQueryString({
-          client_id: config.AUTH0_CLIENT_ID,
-          response_type: 'token id_token',
-          scope: 'openid profile',
-          redirect_uri: redirectUrl,
-          nonce: this.nonce
-        }),
-      });
+
+      const url = `https://${config.AUTH0_DOMAIN}/authorize` + toQueryString({
+        audience: config.AUTH0_API_ID,
+        scope: 'openid profile',
+        response_type: 'token id_token',
+        client_id: config.AUTH0_CLIENT_ID,
+        redirect_uri: redirectUrl,
+        nonce: this.nonce,
+      })
+
+      // console.log('URL', url);
+      const result = await AuthSession.startAsync({ authUrl: url });
 
       if (result.type !== 'success' || result.params.error) {
         console.error('Error fetching', result.type, result.params.error,
@@ -89,6 +92,9 @@ function withAuth(WrappedComponent) {
         console.error('Error validating', decodedToken.nonce, this.nonce);
         return;
       }
+
+      // console.log('profile', decodedToken);
+      // console.log('result.params', result.params);
 
       try {
         await AsyncStorage.setItem('5117Auth:profile', JSON.stringify(decodedToken));

@@ -2,15 +2,22 @@
 console.log(`loading configuration (dev mode=${__DEV__})`);
 
 const config = {
-  // e.g., http://foo.herokuapp.com
+  // TODO: domain name of your heroku app, e.g.:
+  //   API_BASE: 'https://foo-bar-baz.herokuapp.com',
   API_BASE: 'TODO',
 
-  AUTH0_CLIENT_ID: 'iLFQMMACnPkGDQdB65DxSdifHuiALXqQ',
-  AUTH0_DOMAIN: 'https://maxharp3r.auth0.com',
+  // can use same client/api id as in module 3 project
+  AUTH0_DOMAIN: 'maxharp3r.auth0.com',
+  AUTH0_CLIENT_ID: 'ib-OlMoJ1_C5oyTsOUgOX_6ImltKk8lW',
+  AUTH0_API_ID: 'https://react-project-template-5117.herokuapp.com/api/',
 }
 
 const devModeOverrides = {
-  API_BASE: 'http://localhost:3000'
+  // TODO: in some expo modes, you need to set this to the IP address of your
+  //   computer, rather than just 'localhost'. E.g.:
+  //   API_BASE: 'http://192.168.2.12:3000'
+  // API_BASE: 'http://localhost:3000',
+  API_BASE: 'http://192.168.2.12:3000'
 }
 
 if (__DEV__) {
