@@ -58,6 +58,4 @@ DB_URI=mongodb://5117:5117iscool@ec2-54-175-174-41.compute-1.amazonaws.com:80/51
     heroku config:set AUTH0_DOMAIN=(foo).auth0.com AUTH0_API_ID=(bar)
 ```
 
-* add the callback to "allowed callback URLs" list in auth0 client settings: `https://(heroku-dns).herokuapp.com/callback`
-
 * check the code in and `git push heroku master`
