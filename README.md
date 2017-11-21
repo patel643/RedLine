@@ -11,10 +11,12 @@ Features:
 * install [heroku command line app](https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up)
 * create account at [mlab](https://mlab.com/)
 * create account at [auth0](https://auth0.com)
-    * create a (regular web app) client
-    * add a callback URL: `https://auth.expo.io/@EXPO_USERNAME/5117-rnpt` where
-      5117-rnpt should match your "slug" is defined in mobile/exp.json
-    * see <https://github.com/expo/auth0-example> for more docs
+    * (I assume you'll use the same auth0 API/client as your last project)
+    * add a callback URL: `https://auth.expo.io/@EXPO_USERNAME/5117-rnpt` changing
+      `EXPO_USERNAME` and setting `5117-rnpt` to match your "slug" as defined in
+      mobile/exp.json
+    * as you configure express and react native, you can use the same Auth0
+      settings as with the last project (e.g., domain, client id, api id)
 * edit file `mobile/config.js` to configure mobile app (see items marked TODO),
   and commit the changes
 * create file `.env` in root of project to configure express, something like this:

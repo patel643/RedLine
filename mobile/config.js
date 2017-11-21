@@ -4,7 +4,7 @@ console.log(`loading configuration (dev mode=${__DEV__})`);
 const config = {
   // TODO: domain name of your heroku app, e.g.:
   //   API_BASE: 'https://foo-bar-baz.herokuapp.com',
-  API_BASE: 'TODO',
+  API_BASE: 'https://react-native-template-5117.herokuapp.com/',
 
   // can use same client/api id as in module 3 project
   AUTH0_DOMAIN: 'maxharp3r.auth0.com',
@@ -16,7 +16,8 @@ const devModeOverrides = {
   // TODO: in some expo modes, you need to set this to the IP address of your
   //   computer, rather than just 'localhost'. E.g.:
   //   API_BASE: 'http://192.168.2.12:3000'
-  API_BASE: 'http://localhost:3000',
+  // API_BASE: 'http://localhost:3000',
+  API_BASE: 'http://192.168.2.12:3000'
 }
 
 if (__DEV__) {
