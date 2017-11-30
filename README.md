@@ -1,3 +1,4 @@
+
 # Module 4 Group Assignment: Mobile Thing
 
 CSCI 5117, Fall 2017, [assignment description](https://docs.google.com/document/d/1lYgnikooJgHZmLtAzKe1yTFgR7Czz9MGSXuQzl-s3R0)
@@ -42,4 +43,3 @@ Please do not document required libraries (e.g., Express, Bulma).**
 relied on external code, expertise, or anything else, please disclose that
 here:**
 
-...
