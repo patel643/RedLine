@@ -1,7 +1,7 @@
 {
-  "name": "react native project template",
-  "description": "React native project template, for module 4",
-  "slug": "5117-rnpt",
+  "name": "RedLine",
+  "description": "Helping to make a right choice",
+  "slug": "redline",
   "privacy": "public",
   "sdkVersion": "22.0.0",
   "version": "0.0.0",

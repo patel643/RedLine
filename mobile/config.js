@@ -4,12 +4,13 @@ console.log(`loading configuration (dev mode=${__DEV__})`);
 const config = {
   // TODO: domain name of your heroku app, e.g.:
   //   API_BASE: 'https://foo-bar-baz.herokuapp.com',
-  API_BASE: 'https://react-native-template-5117.herokuapp.com/',
+  API_BASE: 'https://aqueous-hollows-28817.herokuapp.com/',
+
 
   // can use same client/api id as in module 3 project
-  AUTH0_DOMAIN: 'maxharp3r.auth0.com',
-  AUTH0_CLIENT_ID: 'ib-OlMoJ1_C5oyTsOUgOX_6ImltKk8lW',
-  AUTH0_API_ID: 'https://react-project-template-5117.herokuapp.com/api/',
+  AUTH0_DOMAIN: 'wdevils.auth0.com',
+  AUTH0_CLIENT_ID: '2Vhbvnkp2O8osKjuatLOIjOB5EsHcFHl',
+  AUTH0_API_ID: 'https://wdevils.auth0.com/api/v2/',
 }
 
 const devModeOverrides = {
