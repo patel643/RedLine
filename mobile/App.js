@@ -18,32 +18,31 @@ const RootNavigator = StackNavigator({
   Home: {
     screen: HomeScreen,
     navigationOptions: {
-      headerTitle: 'Home',
+      headerTitle: 'Red Line',
     },
   },
-  AuthDemo: {
-    screen: AuthDemoScreen,
-    navigationOptions: {
-      headerTitle: 'Auth Demo',
-    },
-
-  },
-  FetchDemo: {
-    screen: FetchDemoScreen,
-    navigationOptions: {
-      headerTitle: 'Fetch Demo',
-    },
-  },
+  // AuthDemo: {
+  //   screen: AuthDemoScreen,
+  //   navigationOptions: {
+  //     headerTitle: 'Auth Demo',
+  //   },
+  //
+  // },
+  // FetchDemo: {
+  //   screen: FetchDemoScreen,
+  //   navigationOptions: {
+  //     headerTitle: 'Fetch Demo',
+  //   },
+  // },
 });
 
 class App extends React.Component {
-
   render() {
     // screenProps is one way to pass props to a navigator
     // https://reactnavigation.org/docs/navigators/navigation-options#Two-Ways-to-specify-each-option
-    return <RootNavigator screenProps={this.props} />
+    //return <RootNavigator screenProps={this.props} />
+    return <HomeScreen screenProps={this.props}/>
   }
-
 }
 
 Expo.registerRootComponent(withAuth(App));

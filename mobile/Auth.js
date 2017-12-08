@@ -81,7 +81,10 @@ function withAuth(WrappedComponent) {
       const result = await AuthSession.startAsync({ authUrl: url });
 
       if (result.type !== 'success' || result.params.error) {
-        console.error('Error fetching', result.type, result.params.error,
+        if(result.params == null){
+          console.error('Error message' , result.params.error);
+        }
+        console.error('Error fetching', result.type,
           result.params.error_description);
         return;
       }
