@@ -2,20 +2,49 @@ import React from 'react';
 import {StyleSheet,Text,View,Image} from 'react-native';
 import {Font} from 'expo';
 import { MaterialIcons } from '@expo/vector-icons';
+
+import '@expo/vector-icons';
 import ScrollableTabView from 'react-native-scrollable-tab-view'
 
 
 
-import Allergins from '../screens/Components/Allergins.js';
+import Allergins2 from '../screens/Components/Allergins2.js';
 import About from '../screens/Components/About.js';
 import ScanScreen from '../screens/Components/Scan.js';
 
+import config from '../config.js';
 
 
 class HomeScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      authStatus: 'not tested yet',
+    }
+  }
   componentWillMount() {
    Font.loadAsync(MaterialIcons.font);
+
   }
+  componentDidMount(){
+    const {getAuthorizationHeader} = this.props.screenProps;
+
+    // creating user
+
+    var userHeader = new Headers();
+    //userHeader.append("username", this.props.screenProps.user.name);
+    userHeader.append("username","Kiran BR");
+      // fetch(`${config.API_BASE}/api/db/createuser`,{headers:userHeader})
+      //   .then((response) => response.json())
+      //   .then((responseJson) => {
+      //     console.log('created user', JSON.stringify(responseJson));
+      //
+      //   })
+      //   .catch((error) => {
+      //     console.error(error);
+      //   });
+      }
+
 
   render() {
 
@@ -45,7 +74,7 @@ class HomeScreen extends React.Component {
                      tabBarInactiveTextColor="#88b0ac">
 
                       <ScanScreen tabLabel="SCAN" {...this.props} />
-                      <Allergins tabLabel="ALLERGENS" {...this.props} />
+                      <Allergins2 tabLabel="ALLERGENS" {...this.props} />
                       <About tabLabel="ABOUT" {...this.props} />
                 </ScrollableTabView>
 
@@ -89,5 +118,5 @@ class HomeScreen extends React.Component {
       marginLeft: 10
    },
   });
-//<Text style={styles.logoText}>RedLine</Text>
+
 export default HomeScreen;

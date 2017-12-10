@@ -88,3 +88,8 @@ borderRadius: 30,
 width: 60,
 height: 60
 }
+
+
+
+// <MaterialIcons name={allergen.selected ? "call-missed" : "call-received"} size={23} syle = {{padding:5}} color={allergen.selected ? "#ed788b" : "#075e54"} />
+// <MaterialIcons name="phone" color='#075e54' size={23} style={{ padding:5 }} />
