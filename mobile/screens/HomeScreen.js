@@ -1,16 +1,16 @@
 import React from 'react';
-import {StyleSheet,Text,View,Image} from 'react-native';
-import {Font} from 'expo';
-import { MaterialIcons } from '@expo/vector-icons';
-
-import '@expo/vector-icons';
+import {StyleSheet,Text,View,Image,Button} from 'react-native';
+import {Font, Expo} from 'expo';
+import {MaterialIcons, FontAwesome} from '@expo/vector-icons';
 import ScrollableTabView from 'react-native-scrollable-tab-view'
-
-
+import Icon from 'react-native-elements'
 
 import Allergins2 from '../screens/Components/Allergins2.js';
 import About from '../screens/Components/About.js';
 import ScanScreen from '../screens/Components/Scan.js';
+import Appl from '../screens/Components/ScanNav.js';
+
+// import Login from '../screens/Components/Login.js';
 
 import config from '../config.js';
 
@@ -24,6 +24,7 @@ class HomeScreen extends React.Component {
   }
   componentWillMount() {
    Font.loadAsync(MaterialIcons.font);
+   Font.loadAsync(FontAwesome.font);
 
   }
   componentDidMount(){
@@ -46,42 +47,68 @@ class HomeScreen extends React.Component {
       }
 
 
+
   render() {
+  const {profile, login, logout, getAuthorizationHeader} = this.props.screenProps;
+  const msg = (!profile) ? <Text>hi</Text> : <Text>hi {profile.name}</Text>
+   if(!profile){
+     return (
+           <View style={styles.mainContainer}>
+              <View style={styles.headerContainer}>
+                 <View style={styles.leftHeaderContainer}>
+                 <Image
+                   style={{width: 80, height: 50,backgroundColor: "white",margin:7 , marginTop:12,borderRadius:2,borderColor:"red",borderRadius: 4}}
+                   source={require('./icon2.png')}
+                   resizeMode="contain"
+                 />
+                 </View>
 
-   return (
-     <View style={styles.mainContainer}>
-        <View style={styles.headerContainer}>
-           <View style={styles.leftHeaderContainer}>
-           <Image
-             style={{width: 80, height: 50,backgroundColor: "white",margin:7 , marginTop:12,borderRadius:2,borderColor:"red",borderRadius: 4}}
-             source={require('./icon2.png')}
-             resizeMode="contain"
-           />
+                 <View style={styles.rightHeaderContainer}>
+                 <FontAwesome name={'sign-in'} size={32} color="white" onPress={login}/>
+                 </View>
+              </View>
+              <View style={styles.contentContainer}>
+              </View>
+          </View>
+        );
+    }
 
-           </View>
+    if(profile){
+      return (
+            <View style={styles.mainContainer}>
+               <View style={styles.headerContainer}>
+                  <View style={styles.leftHeaderContainer}>
+                  <Image
+                    style={{width: 80, height: 50,backgroundColor: "white",margin:7 , marginTop:12,borderRadius:2,borderColor:"red",borderRadius: 4}}
+                    source={require('./icon2.png')}
+                    resizeMode="contain"
+                  />
 
-           <View style={styles.rightHeaderContainer}>
-            <MaterialIcons name="menu" size={32} color="green" />
-           </View>
-        </View>
+                  </View>
 
-           <View style={styles.contentContainer}>
-               <ScrollableTabView
-                     tabBarUnderlineColor="#fff"
-                     tabBarUnderlineStyle={{backgroundColor: "#fff"}}
-                     tabBarBackgroundColor ="#8e0000"
-                     tabBarActiveTextColor="#fff"
-                     tabBarInactiveTextColor="#88b0ac">
+                  <View style={styles.rightHeaderContainer}>
+                    <FontAwesome name={'sign-out'} size={32} color="white" onPress={logout} />
+                   </View>
+               </View>
 
-                      <ScanScreen tabLabel="SCAN" {...this.props} />
-                      <Allergins2 tabLabel="ALLERGENS" {...this.props} />
-                      <About tabLabel="ABOUT" {...this.props} />
-                </ScrollableTabView>
+                  <View style={styles.contentContainer}>
+                      <ScrollableTabView
+                            tabBarUnderlineColor="#fff"
+                            tabBarUnderlineStyle={{backgroundColor: "#fff"}}
+                            tabBarBackgroundColor ="#8e0000"
+                            tabBarActiveTextColor="#fff"
+                            tabBarInactiveTextColor="#88b0ac">
 
-           </View>
+                             <Appl tabLabel="SCAN" {...this.props} />
+                             <Allergins2 tabLabel="ALLERGENS" {...this.props} />
+                             <About tabLabel="ABOUT" {...this.props} />
+                       </ScrollableTabView>
+                  </View>
+            </View>
 
-     </View>
-   );
+      );
+    }
+
    }
 }
 
@@ -89,7 +116,7 @@ class HomeScreen extends React.Component {
    mainContainer: {
       flex: 1,
       backgroundColor: '#F5FCFF',
-      height: 24
+      height: 24,
    },
    headerContainer: {
       flex: 1,
@@ -117,6 +144,12 @@ class HomeScreen extends React.Component {
       alignItems: "flex-start",
       marginLeft: 10
    },
+   text: {
+    fontSize: 19
+  },
+  icon: {
+    fontSize: 19
+  }
   });
 
 export default HomeScreen;

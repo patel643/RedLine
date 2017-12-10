@@ -5,6 +5,8 @@ import {
   Text,
   View,
 } from 'react-native';
+import CollapsingHeader from './CollapsingHeader.js';
+
 
 
 class About extends React.Component {
@@ -17,11 +19,11 @@ class About extends React.Component {
     }
   }
 
+
   render() {
     return (
-      <View>
-        <Text>About Page</Text>
-      </View>
+        <CollapsingHeader />
+
     );
   }
 
