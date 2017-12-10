@@ -9,8 +9,12 @@ import {
   TouchableHighlight,
   Alert,
 } from 'react-native';
+import {Font, Expo} from 'expo';
+
 import CollapsingHeader from './CollapsingHeader';
 import Scan from './Scan.js'
+import {MaterialIcons, FontAwesome} from '@expo/vector-icons';
+
 
 class ScannedScreen extends React.Component {
   constructor(props) {
@@ -22,6 +26,8 @@ class ScannedScreen extends React.Component {
   }
 
   componentWillMount(){
+    Font.loadAsync(MaterialIcons.font);
+    Font.loadAsync(FontAwesome.font);
     var c=parseInt(this.state.code, 10);
       fetch('http://api.foodessentials.com/label?u=0'+c+'&sid=af520b23-4799-4a54-bc94-488484fa8ac0&appid=demoApp_01&f=json&long=38.6300&lat=90.2000&api_key=8bq3c9m8shgu9zc3w6sz24ac',
       {
@@ -45,17 +51,19 @@ class ScannedScreen extends React.Component {
 }
 
   render() {
+
     if(!this.state.info.upc){
         return (
           <View style={styles.container}>
-          <Button onPress={() => this.props.navigation.navigate('Home')} title="Go back" />
+             <FontAwesome name={'arrow-left'} size={24} color="grey" onPress={() => this.props.navigation.navigate('Home')}/>
+
           </View>
           );
       }
     if(this.state.info.upc){
       return(
         <View style={styles.container}>
-          <CollapsingHeader/>
+          <CollapsingHeader navigation={this.props.navigation}/>
         </View>
       );
     }

@@ -9,6 +9,9 @@ import {
   Text,
   View,
 } from 'react-native';
+import {Font} from 'expo';
+import {MaterialIcons, FontAwesome} from '@expo/vector-icons';
+
 
 const HEADER_MAX_HEIGHT = 300;
 const HEADER_MIN_HEIGHT = Platform.OS === 'ios' ? 60 : 73;
@@ -22,7 +25,10 @@ export default class CollapsingHeader extends Component {
       scrollY: new Animated.Value(0),
     };
   }
-
+  componentWillMount(){
+    Font.loadAsync(MaterialIcons.font);
+    Font.loadAsync(FontAwesome.font);
+  }
   _renderScrollViewContent() {
     const data = Array.from({ length: 30 });
     return (
@@ -67,11 +73,13 @@ export default class CollapsingHeader extends Component {
 
     return (
       <View style={styles.fill}>
-        <StatusBar
-          translucent
-          barStyle="light-content"
-          backgroundColor="rgba(0, 0, 0, 0.251)"
-        />
+         <StatusBar
+              translucent
+              barStyle="light-content"
+              backgroundColor="rgba(0, 0, 0, 0.251)"
+            >
+
+</StatusBar>
         <Animated.ScrollView
           style={styles.fill}
           scrollEventThrottle={1}
@@ -88,6 +96,7 @@ export default class CollapsingHeader extends Component {
             { transform: [{ translateY: headerTranslate }] },
           ]}
         >
+
           <Animated.Image
             style={[
               styles.backgroundImage,
@@ -110,7 +119,10 @@ export default class CollapsingHeader extends Component {
             },
           ]}
         >
+        <FontAwesome name={'arrow-left'} size={24} color="grey" onPress={() => this.props.navigation.navigate('Home')}>
+
           <Text style={styles.title}>Title</Text>
+          </FontAwesome>
         </Animated.View>
       </View>
     );
@@ -146,7 +158,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     marginTop: Platform.OS === 'ios' ? 28 : 38,
     height: 32,
-    alignItems: 'center',
+    alignItems: 'flex-start',
     justifyContent: 'center',
     position: 'absolute',
     top: 0,
@@ -166,5 +178,21 @@ const styles = StyleSheet.create({
     backgroundColor: '#D3D3D3',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  headerContainer: {
+     flex: 1,
+     flexDirection: "row",
+     justifyContent: "space-between",
+     backgroundColor: "#191970",
+     alignItems:"center",
+
+  },
+  leftHeaderContainer: {
+     alignItems: "flex-start",
+     flexDirection: "row"
+  },
+  rightHeaderContainer: {
+     alignItems: "flex-end",
+     flexDirection: "row"
   },
 });
