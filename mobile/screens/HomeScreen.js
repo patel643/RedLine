@@ -8,6 +8,8 @@ import Icon from 'react-native-elements'
 import Allergins from '../screens/Components/Allergins.js';
 import About from '../screens/Components/About.js';
 import ScanScreen from '../screens/Components/Scan.js';
+import Appl from '../screens/Components/ScanNav.js';
+
 // import Login from '../screens/Components/Login.js';
 
 
@@ -86,7 +88,7 @@ class HomeScreen extends React.Component {
                             tabBarActiveTextColor="#fff"
                             tabBarInactiveTextColor="#88b0ac">
 
-                             <ScanScreen tabLabel="SCAN" {...this.props} />
+                             <Appl tabLabel="SCAN" {...this.props} />
                              <Allergins tabLabel="ALLERGENS" {...this.props} />
                              <About tabLabel="ABOUT" {...this.props} />
                        </ScrollableTabView>

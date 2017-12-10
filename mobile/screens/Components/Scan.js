@@ -23,6 +23,14 @@ class ScanScreen extends React.Component {
     }
 
   render() {
+    if(!!(this.state.code != '')){
+    return (
+      <View style={styles.container}>
+      <ScannedScreen code={this.state.code} navigation={this.props.navigation}/>
+
+      </View>
+      );
+  }
     if(!!(this.state.code == '')){
       return (
         <View style={styles.container}>
@@ -33,21 +41,11 @@ class ScanScreen extends React.Component {
           </View>
         );
     }
-    if(!!(this.state.code != '')){
-    return (
-      <View style={styles.container}>
-      <ScannedScreen code={this.state.code}/>
 
-      </View>
-      );
-  }
 }
 
   _handleBarCodeRead = info => {
     this.setState({code : JSON.stringify(info.data)});
-   Alert.alert(
-     'Scan successful!',
-   );
  }
 
 }

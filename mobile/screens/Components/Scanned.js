@@ -9,6 +9,8 @@ import {
   TouchableHighlight,
   Alert,
 } from 'react-native';
+import CollapsingHeader from './CollapsingHeader';
+import Scan from './Scan.js'
 
 class ScannedScreen extends React.Component {
   constructor(props) {
@@ -33,7 +35,8 @@ class ScannedScreen extends React.Component {
       })
      .then(res => JSON.parse(res._bodyInit))
       .then(body => {
-        this.setState({info: JSON.stringify(body)});
+        this.setState({info: body});
+        console.log(this.state.info.upc);
       })
       .catch(function (error) {
           console.log(error);
@@ -42,15 +45,52 @@ class ScannedScreen extends React.Component {
 }
 
   render() {
-
-    return (
-      <View style={styles.container}>
-
-            <Text>{this.state.info}</Text>
+    if(!this.state.info.upc){
+        return (
+          <View style={styles.container}>
+          <Button onPress={() => this.props.navigation.navigate('Home')} title="Go back" />
+          </View>
+          );
+      }
+    if(this.state.info.upc){
+      return(
+        <View style={styles.container}>
+          <CollapsingHeader/>
         </View>
       );
+    }
+
+
   }
 
+}
+
+
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+
+function isEmpty(obj) {
+
+    // null and undefined are "empty"
+    if (obj == null) return true;
+
+    // Assume if it has a length property with a non-zero value
+    // that that property is correct.
+    if (obj.length > 0)    return false;
+    if (obj.length === 0)  return true;
+
+    // If it isn't an object at this point
+    // it is empty, but it can't be anything *but* empty
+    // Is it empty?  Depends on your application.
+    if (typeof obj !== "object") return true;
+
+    // Otherwise, does it have any properties of its own?
+    // Note that this doesn't handle
+    // toString and valueOf enumeration bugs in IE < 9
+    for (var key in obj) {
+        if (hasOwnProperty.call(obj, key)) return false;
+    }
+
+    return true;
 }
 
 const styles = StyleSheet.create({
