@@ -46,9 +46,11 @@ router.get('/allergens', function(req, res, next) {
 });
 
 // /allergens/${allergenName}
+//allergens/${allergenName}
 
 //changing the status of cards
 router.put('/allergens/:allergenName', function(req, res, next){
+  console.log("hello there");
   req.db.collection('allergens').updateOne({ "allergens.allergen_name": req.params.allergenName},
       {
         "$set":

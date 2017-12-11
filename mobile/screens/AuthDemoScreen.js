@@ -15,6 +15,7 @@ export default class AuthDemoScreen extends React.Component {
 
     const msg = (!profile) ? <Text>hi</Text> : <Text>hi {profile.name}</Text>
 
+
     return (
       <View style={styles.container}>
         <Button title="Login with Auth0" onPress={login} />
