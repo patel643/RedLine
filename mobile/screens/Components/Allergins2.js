@@ -85,11 +85,12 @@ class Allergins2 extends React.Component {
     //userHeader.append("username", this.props.profile.name);    //lastly call the api to add the task on the server
     userHeader.append("username","Kiran BR")
     userHeader.append('content-type', 'application/json');
-    fetch(`api/db/allergens/${allergenName}`, {
+    fetch(`${config.API_BASE}/api/db/allergens/${allergenName}`, {
       method: 'put',
       headers: userHeader,
       body: JSON.stringify({done: !value})
-    });
+    }).then(response => response.json())
+    .then((data) => console.log(data));
     }
 
 
@@ -109,11 +110,12 @@ class Allergins2 extends React.Component {
 
         <View style={styles.allergenIconContainer}>
         <CheckBox
-                title=""
+
                 onPress={()=>this.togglecheckbox(allergen.allergen_name,allergen.selected)}
                 checked={allergen.selected}
                 size={23}
-                style={{ padding:5 }}
+                containerStyle={{backgroundColor: '#F5FCFF',borderWidth: 0}}
+                style={{ padding:0}}
         />
 
       </View>
@@ -157,7 +159,7 @@ class Allergins2 extends React.Component {
   },
   allergenIconContainer: {
   flex: 1,
-  alignItems: "flex-end"
+  alignItems: "flex-end",
   },
   initStyle: {
   borderRadius: 30,

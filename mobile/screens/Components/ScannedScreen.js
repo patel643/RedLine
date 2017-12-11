@@ -12,7 +12,7 @@ import {
 import {Font, Expo} from 'expo';
 
 import CollapsingHeader from './CollapsingHeader';
-import Scan from './Scan.js'
+import ScanScreen from './ScanScreen.js';
 import {MaterialIcons, FontAwesome} from '@expo/vector-icons';
 
 
