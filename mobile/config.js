@@ -18,7 +18,7 @@ const devModeOverrides = {
   //   computer, rather than just 'localhost'. E.g.:
   //   API_BASE: 'http://192.168.2.12:3000'
    //API_BASE: 'http://localhost:3000',
-  API_BASE: 'http://10.128.70.8:3000'
+  API_BASE: 'http://10.128.197.64:3000'
 }
 
 if (__DEV__) {
