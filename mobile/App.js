@@ -15,24 +15,23 @@ import {Constants} from 'expo';
 import AuthDemoScreen from './screens/AuthDemoScreen';
 import HomeScreen from './screens/HomeScreen';
 import FetchDemoScreen from './screens/FetchDemoScreen';
+import ScanScreen from './screens/Components/ScanScreen.js';
+import ScannedScreen from './screens/Components/ScannedScreen.js';
 
-import ScanScreen from './screens/Components/Scan.js';
-import ScannedScreen from './screens/Components/Scanned.js';
+
 const ScansScreen = ({ navigation }) => (
   <ScanScreen navigation={navigation}/>
 );
-
 const ScannedScreens = () => (
   <ScannedScreen />
 );
-
 const RootNavigator = StackNavigator({
-            Home: {
-              screen: HomeScreen,
-              navigationOptions: {
-                  header: null,
-                },
-            },
+          Home: {
+            screen: HomeScreen,
+            navigationOptions: {
+                header: null,
+              },
+          },
 
           Scans: {
             screen: ScansScreen,  navigationOptions: {
@@ -40,6 +39,7 @@ const RootNavigator = StackNavigator({
               },
 
           },
+
           AfterScan: {
             screen: ScannedScreens,
             navigationOptions: {
@@ -49,8 +49,8 @@ const RootNavigator = StackNavigator({
         },
           {
                 navigationOptions: {
-                  headerMode: 'screen',
-                }
+                headerMode: 'screen',
+          }
 });
 
 function NavigationContainer(props) {
@@ -61,20 +61,23 @@ function NavigationContainer(props) {
    </View>
  )
 }
+
+
 class App extends React.Component {
-  render() {
-    // screenProps is one way to pass props to a navigator
-    // https://reactnavigation.org/docs/navigators/navigation-options#Two-Ways-to-specify-each-option
-    return (
-      <NavigationContainer><RootNavigator screenProps={this.props} /></NavigationContainer>
-    );
-  }
+    render() {
+        // screenProps is one way to pass props to a navigator
+        // https://reactnavigation.org/docs/navigators/navigation-options#Two-Ways-to-specify-each-option
+        return (
+          <NavigationContainer><RootNavigator screenProps={this.props} /></NavigationContainer>
+        );
+      }
 }
+
 const styles = StyleSheet.create({
- container: {
-   flex: 1,
-   paddingTop: Constants.statusBarHeight,
- }
+       container: {
+         flex: 1,
+         paddingTop: Constants.statusBarHeight,
+       }
 });
 
 Expo.registerRootComponent(withAuth(App));

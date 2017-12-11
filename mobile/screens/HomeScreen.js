@@ -8,11 +8,7 @@ import Icon from 'react-native-elements';
 
 import Allergins2 from '../screens/Components/Allergins2.js';
 import About from '../screens/Components/About.js';
-import ScanScreen from '../screens/Components/Scan.js';
-import Appl from '../screens/Components/ScanNav.js';
-
-// import Login from '../screens/Components/Login.js';
-
+import ScanScreen from '../screens/Components/ScanScreen.js';
 import config from '../config.js';
 
 
@@ -48,41 +44,37 @@ class HomeScreen extends React.Component {
 
   render() {
   const {login,logout,getAuthorizationHeader,profile} = this.props.screenProps;
-  // const msg = (!profile) ? <Text>hi</Text> : <Text>hi {profile.name}</Text>
-  // console.log(msg);
-
   var loginButton,contentComponent;
 
-  //What login button to show?
+  //What login button to show is decided here?
   if (!profile) {
     loginButton = <View style={styles.textContainer}><Text style={{flex:1,alignItems:'center',backgroundColor: "#d50000",justifyContent:'center'}}><FontAwesome name={'sign-in'} title='login' size={20} color="white" onPress={login}/>Log In</Text></View>;
   } else {
     loginButton = <View style={styles.textContainer}><Text style={{flex:1,alignItems:'center',backgroundColor: "#d50000",justifyContent:'center'}}><FontAwesome name={'sign-out'} title='logout' size={20} color="white" onPress={logout} />Log Out</Text></View>;
   }
 
- //What content to show?
-  // if (!profile) {
-  //   contentComponent =  <Text>dummy</Text>
-  // } else {
-  //   contentComponent =   <ScrollableTabView
-  //           tabBarUnderlineColor="#fff"
-  //           tabBarUnderlineStyle={{backgroundColor: "#fff"}}
-  //           tabBarBackgroundColor ="#8e0000"
-  //           tabBarActiveTextColor="#fff"
-  //           tabBarInactiveTextColor="#88b0ac">
-  //
-  //            <Appl tabLabel="SCAN" {...this.props} />
-  //            <Allergins2 tabLabel="ALLERGENS" {...this.props} />
-  //            <About tabLabel="ABOUT" {...this.props} />
-  //      </ScrollableTabView>
-  // }
+ //What content to show is decided here?
+  if (!profile) {
+    contentComponent =  <Text>dummy</Text>
+  } else {
+    contentComponent =   <ScrollableTabView
+            tabBarUnderlineColor="#fff"
+            tabBarUnderlineStyle={{backgroundColor: "#fff"}}
+            tabBarBackgroundColor ="#8e0000"
+            tabBarActiveTextColor="#fff"
+            tabBarInactiveTextColor="#88b0ac">
+
+             <ScanScreen tabLabel="SCAN" {...this.props} />
+             <Allergins2 tabLabel="ALLERGENS" {...this.props} />
+             <About tabLabel="ABOUT" {...this.props} />
+       </ScrollableTabView>
+  }
 
    return (
-
             <View style={styles.mainContainer}>
-                <Text>My initialProps are {JSON.stringify(this.props.screenProps.profile.name)}</Text>
+              <Text>My initialProps are {JSON.stringify(this.props.screenProps.profile.name)}</Text>
 
-                {/* header container */}
+              {/* header container */}
                <View style={styles.headerContainer}>
                   <View style={styles.leftHeaderContainer}>
                         <Image
@@ -96,24 +88,12 @@ class HomeScreen extends React.Component {
                   </View>
               </View>
 
-                          {/* body container */}
-                          <View style={styles.contentContainer}>
-                          <ScrollableTabView
-                                    tabBarUnderlineColor="#fff"
-                                    tabBarUnderlineStyle={{backgroundColor: "#fff"}}
-                                    tabBarBackgroundColor ="#8e0000"
-                                    tabBarActiveTextColor="#fff"
-                                    tabBarInactiveTextColor="#88b0ac">
-
-                                    <ScanScreen tabLabel="SCAN" {...this.props}/>
-                                     <Allergins2 tabLabel="ALLERGENS" {...this.props} />
-                                     <About tabLabel="ABOUT" {...this.props} />
-                          </ScrollableTabView>
-
-                          </View>
+              {/* body container */}
+              <View style={styles.contentContainer}>
+                {contentComponent}
+              </View>
 
           </View>
-
       );
     }
 
