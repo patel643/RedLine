@@ -1,37 +1,3 @@
-// import React from 'react';
-// import {
-//   Button,
-//   StyleSheet,
-//   Text,
-//   View,
-// } from 'react-native';
-// import CollapsingHeader from './CollapsingHeader.js';
-//
-//
-//
-// class About extends React.Component {
-//
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       message: 'no message yet',
-//       authStatus: 'not tested yet',
-//     }
-//   }
-//
-//
-//   render() {
-//     return (
-//         <View>
-//         <Text>About Page</Text>
-//         </View>
-//
-//     );
-//   }
-//
-// }
-//
-
 import React, { Component } from 'react';
 import { AppRegistry, StatusBar, View, Image, Animated, Platform } from 'react-native';
 import { Pages } from 'react-native-pages';
@@ -66,7 +32,7 @@ Platform.select({
   android: () => StatusBar.setBackgroundColor('#263238'),
 })();
 
-/* eslint-disable react/prop-types */
+
 
 let Label = ({ color, backgroundColor, text, effect, index, pages, progress }) => {
   let style = { ...textStyle, color };
@@ -149,7 +115,7 @@ class About extends Component {
             <Label color='#FFF59D' backgroundColor='#607D8B' text='Choosing the right product cant get simpler than this!' effect='skew' />
             <Label color='#B2FF59' backgroundColor='#546E7A' text='Mark your allergens in ALLERGENS tab' effect='rise' />
             <Label color='#81D4FA' backgroundColor='#455A64' text='Scan to inspect!'  effect='zoom' />
-            <Label color='#F44336' backgroundColor='#37474F' text='BINGO!!!You know if it belongs in your shelf' effect='flip' />
+            <Label color='#32CD32' backgroundColor='#37474F' text='BINGO!!!You know if it belongs in your shelf' effect='flip' />
           </Pages>
 
         </View>
