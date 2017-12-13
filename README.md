@@ -13,7 +13,8 @@ CSCI 5117, Fall 2017, [assignment description](https://docs.google.com/document/
 
 * First Last, x500@umn.edu
 * ...
-
+Kiran Ravindra, ravin047@umn.edu
+Nidhi Patel, patel643@umn.edu
 
 ## Key Features
 
@@ -21,6 +22,7 @@ CSCI 5117, Fall 2017, [assignment description](https://docs.google.com/document/
 (one sentence per bullet, maximum 4 bullets):**
 
 * ...
+
 
 
 ## Screenshots of App
