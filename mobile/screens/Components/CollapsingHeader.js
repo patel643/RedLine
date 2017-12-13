@@ -25,28 +25,27 @@ export default class CollapsingHeader extends Component {
       scrollY: new Animated.Value(0),
       info: this.props.info,
       data: this.props.data,
-      values: [];
+      values: []
     };
   }
   componentWillMount(){
     Font.loadAsync(MaterialIcons.font);
     Font.loadAsync(FontAwesome.font);
 
-    value=this.props.info.allergens.map((allergens) => (
-      this.setState({values:[...this.state.values, allergens.allergen_value]});
-    )
-    );
+    val=this.props.info.allergens.map((allergens) =>
+      (allergens.allergen_value)
 
-    console.log(this.state.values);
+    );
+this.setState({values: val});
 
   }
   _renderScrollViewContent() {
-    const data = Array.from({ length: 30 });
+    console.log(this.state.values);
     return (
       <View style={styles.scrollViewContent}>
-        {data.map((_, i) => (
+        {this.state.values.map((d, i) => (
           <View key={i} style={styles.row}>
-            <Text>{i}</Text>
+            <Text>{d}</Text>
           </View>
         ))}
       </View>
