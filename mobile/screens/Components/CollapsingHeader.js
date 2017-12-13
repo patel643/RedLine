@@ -23,11 +23,22 @@ export default class CollapsingHeader extends Component {
 
     this.state = {
       scrollY: new Animated.Value(0),
+      info: this.props.info,
+      data: this.props.data,
+      values: [];
     };
   }
   componentWillMount(){
     Font.loadAsync(MaterialIcons.font);
     Font.loadAsync(FontAwesome.font);
+
+    value=this.props.info.allergens.map((allergens) => (
+      this.setState({values:[...this.state.values, allergens.allergen_value]});
+    )
+    );
+
+    console.log(this.state.values);
+
   }
   _renderScrollViewContent() {
     const data = Array.from({ length: 30 });
@@ -105,7 +116,7 @@ export default class CollapsingHeader extends Component {
                 transform: [{ translateY: imageTranslate }],
               },
             ]}
-            source={require('./gyro_header.jpg')}
+            source={require('./images/danger.gif')}
           />
         </Animated.View>
         <Animated.View

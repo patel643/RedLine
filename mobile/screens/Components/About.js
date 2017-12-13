@@ -22,7 +22,9 @@ class About extends React.Component {
 
   render() {
     return (
-        <CollapsingHeader />
+        <View>
+        <Text>About Page</Text>
+        </View>
 
     );
   }

@@ -10,7 +10,7 @@ import {
   Alert,
 } from 'react-native';
 import {Font, Expo} from 'expo';
-
+import config from '../../config';
 import CollapsingHeader from './CollapsingHeader';
 import ScanScreen from './ScanScreen.js';
 import {MaterialIcons, FontAwesome} from '@expo/vector-icons';
@@ -22,6 +22,8 @@ class ScannedScreen extends React.Component {
      this.state = {
      code: this.props.code.slice(1),
      info: [],
+     isFirstRender: true,
+     data: [],
    };
   }
 
@@ -42,28 +44,47 @@ class ScannedScreen extends React.Component {
      .then(res => JSON.parse(res._bodyInit))
       .then(body => {
         this.setState({info: body});
-        console.log(this.state.info.upc);
       })
       .catch(function (error) {
           console.log(error);
         });
 
+
+
+}
+
+componentDidMount() {
+
+  let request = new Request(`${config.API_BASE}/api/db/allergens`, {
+             method: 'GET',
+             headers: {
+                 "Content-Type": "application/json"
+             },
+         });
+         console.log("myRequest: ", request);
+
+         fetch(request).then(response => response.json())
+         .then((data) => console.log("data: ",data));
+
 }
 
   render() {
-
+    if(this.state.isFirstRender == true){
+      <View>
+      <Text>Loading...</Text>
+      </View>
+    }
     if(!this.state.info.upc){
         return (
           <View style={styles.container}>
              <FontAwesome name={'arrow-left'} size={24} color="grey" onPress={() => this.props.navigation.navigate('Home')}/>
-
           </View>
           );
       }
     if(this.state.info.upc){
       return(
         <View style={styles.container}>
-          <CollapsingHeader navigation={this.props.navigation}/>
+          <CollapsingHeader navigation={this.props.navigation} info={this.state.info} data={this.state.data}/>
         </View>
       );
     }
