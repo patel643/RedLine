@@ -8,6 +8,7 @@ import {
   Dimensions,
   TouchableHighlight,
   Alert,
+  Image
 } from 'react-native';
 import {Font, Expo} from 'expo';
 import config from '../../config';
@@ -78,8 +79,11 @@ componentDidMount() {
         return (
           <View style={styles.container}>
              <FontAwesome name={'arrow-left'} size={24} color="grey" onPress={() => this.props.navigation.navigate('Home')}/>
+             <Text>Hmmm, are you sure you scanned a food product......</Text>
+             <Image source={require('./images/error.png')}></Image>
+
           </View>
-          );
+        );
       }
     if(this.state.info.upc){
       return(
