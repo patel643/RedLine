@@ -7,13 +7,14 @@ const fetch = require('node-fetch');
 
 
 /*Creating a new user*/
-router.get('/createuserIfAbsent',function(req,res,next){
-  req.db.collection('allergens').find().toArray(function(err, results){
+router.get('/createuser',function(req,res,next){
+  console.log(req.headers['username']);
+  req.db.collection('allergens').find({"name": req.headers['username']}).toArray(function(err, results){
       console.log("User in db earlier" + results);
       if(results.length == 0){ //If no user
           results =  {
           "name": String(req.headers['username']),
-          "allergens":[]
+          "allergens":default_data
         }
 
         console.log("User not in db ... creating user" + results);
@@ -29,19 +30,21 @@ router.get('/createuserIfAbsent',function(req,res,next){
 
 /*GET all cards as JSON */
 router.get('/allergens', function(req, res, next) {
-  //console.log(req.headers['username']);
+  console.log(req.headers['username']);
   //console.log('auth0 user id:', req.user.sub);
 
-  req.db.collection('allergens').find().toArray(function(err,results){
+  req.db.collection('allergens').find({"name": req.headers['username']}).toArray(function(err,results){
     if(err){
       next(err);
     }
     if(results.length==0){
       res.send([]);
+      console.log("allergens list is empty");
     }else{
       res.send(results[0].allergens);
+      console.log("These are allergens for user  " + JSON.stringify(results[0].allergens));
     }
-    console.log("These are cards for user  " + JSON.stringify(results[0].allergens));
+
   });
 });
 
@@ -50,8 +53,8 @@ router.get('/allergens', function(req, res, next) {
 
 //changing the status of cards
 router.put('/allergens/:allergenName', function(req, res, next){
-  console.log("hello there");
-  req.db.collection('allergens').updateOne({ "allergens.allergen_name": req.params.allergenName},
+  console.log(req.headers['username']);
+  req.db.collection('allergens').updateOne({"name": req.headers['username'],  "allergens.allergen_name": req.params.allergenName},
       {
         "$set":
           {"allergens.$.selected": req.body.done}
@@ -111,5 +114,74 @@ router.get('/protected', checkJwt, function(req, res, next) {
     .catch(e => console.error('error fetching userinfo from auth0'));
 
 });
+
+var default_data = [{
+		"allergen_name": "Cereals",
+		"selected": true,
+		"image": "https://spoonacular.com/cdn/ingredients_100x100/rice-crispy-cereal.png"
+	},
+	{
+		"allergen_name": "Shellfish",
+		"selected": true,
+		"image": "https://spoonacular.com/cdn/ingredients_100x100/fish-fillet.jpg"
+	}, {
+		"allergen_name": "Egg",
+		"selected": true,
+		"image": "https://spoonacular.com/cdn/ingredients_100x100/egg.jpg"
+	}, {
+		"allergen_name": "Fish",
+		"selected": true,
+		"image": "https://spoonacular.com/cdn/ingredients_100x100/fish-fillet.jpg"
+	}, {
+		"allergen_name": "Milk",
+		"selected": true,
+		"image": "https://spoonacular.com/cdn/ingredients_100x100/milk.jpg"
+	}, {
+		"allergen_name": "Peanuts",
+		"selected": true,
+		"image": "https://spoonacular.com/cdn/ingredients_100x100/peanuts.png"
+	}, {
+		"allergen_name": "Sulfites",
+		"selected": true,
+		"image": "https://spoonacular.com/cdn/ingredients_100x100/no.jpg"
+	}, {
+		"allergen_name": "Tree Nuts",
+		"selected": true,
+		"image": "https://spoonacular.com/cdn/ingredients_100x100/nuts-mixed.jpg"
+
+	}, {
+		"allergen_name": "Soybean",
+		"selected": true,
+		"image": "https://spoonacular.com/cdn/ingredients_100x100/chickpea-flour-or-another-gluten-free-flour.jpg"
+
+	}, {
+		"allergen_name": "Sesame Seeds",
+		"selected": true,
+		"image": "https://spoonacular.com/cdn/ingredients_100x100/sesame-seeds.jpg"
+
+	}, {
+		"allergen_name": "Gluten",
+		"selected": true,
+		"image": "https://spoonacular.com/cdn/ingredients_100x100/seitan.jpg"
+
+	}, {
+		"allergen_name": "Lactose",
+		"selected": true,
+		"image": "https://spoonacular.com/cdn/ingredients_100x100/milk.jpg"
+
+	}, {
+		"allergen_name": "Corn",
+		"selected": true,
+		"image": "https://spoonacular.com/cdn/ingredients_100x100/corn.png"
+	}, {
+		"allergen_name": "Wheat",
+		"selected": true,
+		"image": "https://spoonacular.com/cdn/ingredients_100x100/whole-wheat-chex.jpg"
+	}, {
+		"allergen_name": "Coconut",
+		"selected": true,
+		"image": "https://spoonacular.com/cdn/ingredients_100x100/coconut.jpg"
+	}
+];
 
 module.exports = router;

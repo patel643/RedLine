@@ -14,44 +14,68 @@ import config from '../config.js';
 
 class HomeScreen extends React.Component {
 
+  // constructor(props){
+  //   super(props);
+  //   //this.modifyLogin = this.props.modifyLogin.bind(this) ;
+  // }
+
+
+
   componentWillMount() {
    Font.loadAsync(MaterialIcons.font);
    Font.loadAsync(FontAwesome.font);
 
   }
+
   componentDidMount(){
 
-    // const {profile, login, logout, getAuthorizationHeader} = this.props.screenProps;
-    //
-    // // creating user
-    //
-    // var userHeader = new Headers();
-    // userHeader.append("username", profile.name);
-    // console.log("current user" + profile.name);
+    const {profile, login, logout, getAuthorizationHeader} = this.props.screenProps;
+
+    // creating user
+
+    // let request = new Request(`${config.API_BASE}/api/db/createuser`, {
+    //     method: "POST",
+    //     headers: {
+    //         "Content-Type": "application/json"
+    //     },
+    //     body: JSON.stringify(data)
+    // });
+
+
+    //console.log("current user" + profile.name);
     //userHeader.append("username","Kiran BR");
-      // fetch(`${config.API_BASE}/api/db/createuser`,{headers:userHeader})
-      //   .then((response) => response.json())
-      //   .then((responseJson) => {
-      //     console.log('created user', JSON.stringify(responseJson));
-      //
-      //   })
-      //   .catch((error) => {
-      //     console.error(error);
-      //   });
+    if(!!profile){
+    var userHeader = new Headers();
+    userHeader.append("username", profile.name);
+    fetch(`${config.API_BASE}/api/db/createuser`,{headers:userHeader})
+        .then((response) => response.json())
+        .then((responseJson) => {
+          console.log('created user', JSON.stringify(responseJson));
+
+        })
+        .catch((error) => {
+          console.error(error);
+        });
       }
+    }
 
-
+//if (this.props.screenProps.profile.name) {
+//   console.log('changing to signout , profile is present');
+//   loginButton = <View style={styles.textContainer}><Text style={{flex:1,alignItems:'center',backgroundColor: "#d50000",justifyContent:'center'}}><FontAwesome name={'sign-out'} title='logout' size={20} color="white" onPress={()=>{logout;console.log(""+this.props.screenProps.profile.name)}} />Log Out</Text></View>;
+//
+// } else {
+//   console.log('changing to signin , profile is absent');
+//   loginButton = <View style={styles.textContainer}><Text style={{flex:1,alignItems:'center',backgroundColor: "#d50000",justifyContent:'center'}}><FontAwesome name={'sign-in'} title='login' size={20} color="white" onPress={()=>{login;console.log(""+this.props.screenProps.profile.name)}}   />Log In</Text></View>;
+// }
 
   render() {
+  console.log("Again here" + this.props.screenProps.profile);
   const {login,logout,getAuthorizationHeader,profile} = this.props.screenProps;
   var loginButton,contentComponent;
 
   //What login button to show is decided here?
-  if (!profile) {
-    loginButton = <View style={styles.textContainer}><Text style={{flex:1,alignItems:'center',backgroundColor: "#d50000",justifyContent:'center'}}><FontAwesome name={'sign-in'} title='login' size={20} color="white" onPress={login}/>Log In</Text></View>;
-  } else {
-    loginButton = <View style={styles.textContainer}><Text style={{flex:1,alignItems:'center',backgroundColor: "#d50000",justifyContent:'center'}}><FontAwesome name={'sign-out'} title='logout' size={20} color="white" onPress={logout} />Log Out</Text></View>;
-  }
+
+
 
  //What content to show is decided here?
   if (!profile) {
@@ -72,7 +96,7 @@ class HomeScreen extends React.Component {
 
    return (
             <View style={styles.mainContainer}>
-              <Text>My initialProps are {JSON.stringify(this.props.screenProps.profile.name)}</Text>
+              <Text>You are identified as {JSON.stringify(this.props.screenProps.profile.name)}</Text>
 
               {/* header container */}
                <View style={styles.headerContainer}>
@@ -84,7 +108,7 @@ class HomeScreen extends React.Component {
                         />
                   </View>
                   <View style={styles.rightHeaderContainer}>
-                    {loginButton}
+
                   </View>
               </View>
 

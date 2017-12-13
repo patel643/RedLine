@@ -17,6 +17,7 @@ import HomeScreen from './screens/HomeScreen';
 import FetchDemoScreen from './screens/FetchDemoScreen';
 import ScanScreen from './screens/Components/ScanScreen.js';
 import ScannedScreen from './screens/Components/ScannedScreen.js';
+import Landing from './screens/LandingScreen.js';
 
 
 const ScansScreen = ({ navigation }) => (
@@ -47,6 +48,7 @@ const RootNavigator = StackNavigator({
             },
           },
         },
+
           {
                 navigationOptions: {
                 headerMode: 'screen',
@@ -64,14 +66,45 @@ function NavigationContainer(props) {
 
 
 class App extends React.Component {
-    render() {
+   constructor(props){
+     super(props);
+     this.state = {
+       loginstatus: false,
+   }
+ }
+
+ modifyLoginStatus(){
+   const {login, logout} = this.props;
+   if(this.props.screenProps.profile.name){
+    // logout();
+     this.setState({loginstatus: false});
+   }
+   else{
+     //login();
+     this.setState({loginstatus: true});
+   }
+
+ }
+
+ // return (
+ //   <NavigationContainer><RootNavigator screenProps={this.props} modifyLoginStatus={this.modifyLoginStatus}/></NavigationContainer>
+ // );
+render() {
         // screenProps is one way to pass props to a navigator
         // https://reactnavigation.org/docs/navigators/navigation-options#Two-Ways-to-specify-each-option
-        return (
-          <NavigationContainer><RootNavigator screenProps={this.props} /></NavigationContainer>
-        );
+
+
+
+        if(this.props.profile.name){
+          return (<NavigationContainer><RootNavigator screenProps={this.props} /></NavigationContainer>);
+        }
+        else{
+          return <Landing screenProps={this.props}/>
+        }
       }
 }
+
+
 
 const styles = StyleSheet.create({
        container: {

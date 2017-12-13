@@ -42,7 +42,11 @@ class Allergins2 extends React.Component {
   }
 
   componentDidMount() {
-      fetch(`${config.API_BASE}/api/db/allergens`)
+    const {profile, login, logout, getAuthorizationHeader} = this.props.screenProps;
+    if(!!profile){
+    var userHeader = new Headers();
+    userHeader.append("username", profile.name);
+    fetch(`${config.API_BASE}/api/db/allergens`,{headers: userHeader})
     .then(response => response.json())
     .then((data) => {
     this.setState({
@@ -52,6 +56,10 @@ class Allergins2 extends React.Component {
     })
    });
   }
+  else{
+    console.log("Allergens page: profile not found");
+  }
+}
 
   render() {
     if (!this.state.fontsAreLoaded) {
@@ -80,9 +88,9 @@ class Allergins2 extends React.Component {
     this.setState({dataArray: nextState,allergenDataSource:this.state.allergenDataSource.cloneWithRows(nextState)});
 
     //Update in db
-
+    const {profile, login, logout, getAuthorizationHeader} = this.props.screenProps;
     var userHeader = new Headers();
-    //userHeader.append("username", this.props.profile.name);    //lastly call the api to add the task on the server
+    userHeader.append("username", profile.name);    //lastly call the api to add the task on the server
     userHeader.append("username","Kiran BR")
     userHeader.append('content-type', 'application/json');
     fetch(`${config.API_BASE}/api/db/allergens/${allergenName}`, {

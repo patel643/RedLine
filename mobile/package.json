@@ -16,6 +16,7 @@
     "react-native-camera": "^0.12.0",
     "react-native-elements": "^0.18.5",
     "react-native-multiple-select-list": "^1.0.4",
+    "react-native-pages": "^0.6.1",
     "react-native-scrollable-tab-view": "^0.8.0",
     "react-native-vector-icons": "^4.4.2",
     "react-navigation": "^1.0.0-beta.19"
