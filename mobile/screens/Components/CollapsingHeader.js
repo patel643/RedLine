@@ -8,9 +8,16 @@ import {
   StyleSheet,
   Text,
   View,
+  ScrollView,
+  Image,
 } from 'react-native';
 import {Font} from 'expo';
 import {MaterialIcons, FontAwesome} from '@expo/vector-icons';
+import dbdata from './dbdata.json'
+
+import Style from './Style.js';
+import Panel from './Panel.js';
+import CollapseData from './CollapseData.js';
 
 
 const HEADER_MAX_HEIGHT = 300;
@@ -25,7 +32,8 @@ export default class CollapsingHeader extends Component {
       scrollY: new Animated.Value(0),
       info: this.props.info,
       data: this.props.data,
-      values: []
+      values: [],
+      contains: false
     };
   }
   componentWillMount(){
@@ -33,26 +41,39 @@ export default class CollapsingHeader extends Component {
     Font.loadAsync(FontAwesome.font);
 
     val=this.props.info.allergens.map((allergens) =>
-      (allergens.allergen_value)
-
+      ( allergens.allergen_value)
     );
-this.setState({values: val});
+    this.setState({values: val});
+    var temp=false;
+    val.map((d, i) =>{
+      if((parseInt(d,10))>0)
+        temp=true;
+    })
+    this.setState({contains: temp})
+
 
   }
+
+
   _renderScrollViewContent() {
     console.log(this.state.values);
+
+    console.log(this.state.contains);
     return (
-      <View style={styles.scrollViewContent}>
-        {this.state.values.map((d, i) => (
-          <View key={i} style={styles.row}>
-            <Text>{d}</Text>
-          </View>
-        ))}
-      </View>
+       <View style={styles.scrollViewContent}>
+
+          <CollapseData navigation={this.props.navigation} info={this.props.info} contains={this.state.contains}/>
+
+    </View>
     );
   }
 
   render() {
+    if(this.state.contains == false)
+      var img=require('./images/check.gif');
+    if(this.state.contains == true)
+      var img=require('./images/danger.gif');
+
     const headerTranslate = this.state.scrollY.interpolate({
       inputRange: [0, HEADER_SCROLL_DISTANCE],
       outputRange: [0, -HEADER_SCROLL_DISTANCE],
@@ -80,7 +101,7 @@ this.setState({values: val});
       outputRange: [0, 0, -8],
       extrapolate: 'clamp',
     });
-
+console.log(img);
     return (
       <View style={styles.fill}>
          <StatusBar
@@ -115,7 +136,8 @@ this.setState({values: val});
                 transform: [{ translateY: imageTranslate }],
               },
             ]}
-            source={require('./images/danger.gif')}
+
+              source={img}
           />
         </Animated.View>
         <Animated.View
@@ -131,7 +153,6 @@ this.setState({values: val});
         >
         <FontAwesome name={'arrow-left'} size={24} color="grey" onPress={() => this.props.navigation.navigate('Home')}>
 
-          <Text style={styles.title}>Title</Text>
           </FontAwesome>
         </Animated.View>
       </View>
