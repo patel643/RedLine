@@ -69,4 +69,5 @@ Food Essentials API(http://developer.foodessentials.com/api#Methods)
 relied on external code, expertise, or anything else, please disclose that
 here:**
 
-*(We face some issue with deployed expo connecting to heroku,As in Allergens tab doesnot load when deployed, but works well from heroku local. Attached screenshots.)
+*(We face some issue with deployed expo connecting to heroku; Allergens tab doesnot load when deployed, but works well from heroku local. Attached screenshots.)
+*As a workaround, we made all allergens checked for a newly created user user., so you can try the app without allergens page. 
