@@ -8,7 +8,9 @@ CSCI 5117, Fall 2017, [assignment description](https://docs.google.com/document/
 * Team Name: WonderDevils
 * App Name: RedLine
 * App Link: https://expo.io/@kiranravindra/redline 
-(We face some issue with deployed expo connecting to heroku,As in Allergens tab doesnot load when deployed, but works well from heroku local. Attached screenshots.)
+
+
+
 
 ### Students
 
@@ -33,7 +35,14 @@ Rahul Bora, bora0072@umn.edu
 **[Add a screenshot of each key page (maximum 4)](https://stackoverflow.com/questions/10189356/how-to-add-screenshot-to-readmes-in-github-repository)
 along with a very brief caption:**
 
-![Screenshot](https://github.com/umn-5117-f17/module-4-group-assignment-wonderdevils/blob/master/mobile/archive/about.PNG)
+
+![Screenshot](https://github.com/umn-5117-f17/module-4-group-assignment-wonderdevils/blob/master/mobile/archive/scan.PNG)
+![Screenshot](https://github.com/umn-5117-f17/module-4-group-assignment-wonderdevils/blob/master/mobile/archive/allergens.PNG)
+![Screenshot](https://github.com/umn-5117-f17/module-4-group-assignment-wonderdevils/blob/master/mobile/archive/scansafe.PNG)
+![Screenshot](https://github.com/umn-5117-f17/module-4-group-assignment-wonderdevils/blob/master/mobile/archive/scandanger.PNG)
+![Screenshot](https://github.com/umn-5117-f17/module-4-group-assignment-wonderdevils/blob/master/mobile/archive/Scan_nonfood_product.PNG)
+
+
 
 
 
@@ -50,3 +59,4 @@ Food Essentials API(http://developer.foodessentials.com/api#Methods)
 relied on external code, expertise, or anything else, please disclose that
 here:**
 
+*(We face some issue with deployed expo connecting to heroku,As in Allergens tab doesnot load when deployed, but works well from heroku local. Attached screenshots.)
