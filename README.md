@@ -5,9 +5,10 @@ CSCI 5117, Fall 2017, [assignment description](https://docs.google.com/document/
 
 ## App Info:
 
-* Team Name: TODO
-* App Name: TODO
-* App Link: <https://expo.io/@TODO/TODO>
+* Team Name: WonderDevils
+* App Name: RedLine
+* App Link: https://expo.io/@kiranravindra/redline 
+(We face some issue with deployed expo connecting to heroku,As in Allergens tab doesnot load when deployed, but works well from heroku local. Attached screenshots.)
 
 ### Students
 
@@ -15,6 +16,7 @@ CSCI 5117, Fall 2017, [assignment description](https://docs.google.com/document/
 * ...
 Kiran Ravindra, ravin047@umn.edu
 Nidhi Patel, patel643@umn.edu
+Rahul Bora, bora0072@umn.edu
 
 ## Key Features
 
@@ -22,7 +24,8 @@ Nidhi Patel, patel643@umn.edu
 (one sentence per bullet, maximum 4 bullets):**
 
 * ...
-
+1. Complex Navigation - Nesting of Stack Navigator, Scroll Navigation and another Stack Navigator within it. 
+2. Retrieving allergens from http://developer.foodessentials.com/api#Methods and integrating the results obtained from scanning UPC code with the list of allergens users have in our database. 
 
 
 ## Screenshots of App
@@ -30,7 +33,8 @@ Nidhi Patel, patel643@umn.edu
 **[Add a screenshot of each key page (maximum 4)](https://stackoverflow.com/questions/10189356/how-to-add-screenshot-to-readmes-in-github-repository)
 along with a very brief caption:**
 
-![](https://media.giphy.com/media/HLaARmlAa7DpK/giphy.gif)
+![Screenshot](/relative/path/to/img.jpg?raw=true "Optional Title")
+
 
 
 ## External Dependencies
@@ -40,6 +44,7 @@ Please do not document required libraries (e.g., Express, Bulma).**
 
 * Library or service name: description of use
 * ...
+Food Essentials API(http://developer.foodessentials.com/api#Methods)
 
 **If there's anything else you would like to disclose about how your project
 relied on external code, expertise, or anything else, please disclose that
