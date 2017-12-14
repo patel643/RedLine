@@ -33,7 +33,7 @@ Rahul Bora, bora0072@umn.edu
 **[Add a screenshot of each key page (maximum 4)](https://stackoverflow.com/questions/10189356/how-to-add-screenshot-to-readmes-in-github-repository)
 along with a very brief caption:**
 
-![Screenshot](/relative/path/to/img.jpg?raw=true "Optional Title")
+![Screenshot](https://github.com/umn-5117-f17/module-4-group-assignment-wonderdevils/blob/master/mobile/archive/about.PNG)
 
 
 
