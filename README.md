@@ -28,6 +28,8 @@ Rahul Bora, bora0072@umn.edu
 * ...
 1. Complex Navigation - Nesting of Stack Navigator, Scroll Navigation and another Stack Navigator within it. 
 2. Retrieving allergens from http://developer.foodessentials.com/api#Methods and integrating the results obtained from scanning UPC code with the list of allergens users have in our database. 
+3. Collapsable List.
+4.Authentication
 
 
 ## Screenshots of App
@@ -35,12 +37,20 @@ Rahul Bora, bora0072@umn.edu
 **[Add a screenshot of each key page (maximum 4)](https://stackoverflow.com/questions/10189356/how-to-add-screenshot-to-readmes-in-github-repository)
 along with a very brief caption:**
 
+Scan Page for the product
+![](https://github.com/umn-5117-f17/module-4-group-assignment-wonderdevils/blob/master/mobile/archive/scan.PNG)
 
-![Screenshot](https://github.com/umn-5117-f17/module-4-group-assignment-wonderdevils/blob/master/mobile/archive/scan.PNG)
-![Screenshot](https://github.com/umn-5117-f17/module-4-group-assignment-wonderdevils/blob/master/mobile/archive/allergens.PNG)
-![Screenshot](https://github.com/umn-5117-f17/module-4-group-assignment-wonderdevils/blob/master/mobile/archive/scansafe.PNG)
-![Screenshot](https://github.com/umn-5117-f17/module-4-group-assignment-wonderdevils/blob/master/mobile/archive/scandanger.PNG)
-![Screenshot](https://github.com/umn-5117-f17/module-4-group-assignment-wonderdevils/blob/master/mobile/archive/Scan_nonfood_product.PNG)
+My Allergens page of the user
+![](https://github.com/umn-5117-f17/module-4-group-assignment-wonderdevils/blob/master/mobile/archive/allergens.PNG)
+
+If product is safe from user's allergen, we display this page
+![](https://github.com/umn-5117-f17/module-4-group-assignment-wonderdevils/blob/master/mobile/archive/scansafe.PNG)
+
+If product contains allergens, we display which allergens are present in categories as shown.
+![](https://github.com/umn-5117-f17/module-4-group-assignment-wonderdevils/blob/master/mobile/archive/scandanger.PNG)
+
+Error handling, if a non food product is scanned.
+![](https://github.com/umn-5117-f17/module-4-group-assignment-wonderdevils/blob/master/mobile/archive/Scan_nonfood_product.jpeg)
 
 
 
