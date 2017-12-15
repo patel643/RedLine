@@ -14,68 +14,16 @@ import config from '../config.js';
 
 class HomeScreen extends React.Component {
 
-  // constructor(props){
-  //   super(props);
-  //   //this.modifyLogin = this.props.modifyLogin.bind(this) ;
-  // }
-
-
-
   componentWillMount() {
    Font.loadAsync(MaterialIcons.font);
    Font.loadAsync(FontAwesome.font);
 
   }
 
-  componentDidMount(){
-
-    const {profile, login, logout, getAuthorizationHeader} = this.props.screenProps;
-
-    // creating user
-
-    // let request = new Request(`${config.API_BASE}/api/db/createuser`, {
-    //     method: "POST",
-    //     headers: {
-    //         "Content-Type": "application/json"
-    //     },
-    //     body: JSON.stringify(data)
-    // });
-
-
-    //console.log("current user" + profile.name);
-    //userHeader.append("username","Kiran BR");
-    if(!!profile){
-    var userHeader = new Headers();
-    userHeader.append("username", profile.name);
-    fetch(`${config.API_BASE}/api/db/createuser`,{headers:userHeader})
-        .then((response) => response.json())
-        .then((responseJson) => {
-          console.log('created user', JSON.stringify(responseJson));
-
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-      }
-    }
-
-//if (this.props.screenProps.profile.name) {
-//   console.log('changing to signout , profile is present');
-//   loginButton = <View style={styles.textContainer}><Text style={{flex:1,alignItems:'center',backgroundColor: "#d50000",justifyContent:'center'}}><FontAwesome name={'sign-out'} title='logout' size={20} color="white" onPress={()=>{logout;console.log(""+this.props.screenProps.profile.name)}} />Log Out</Text></View>;
-//
-// } else {
-//   console.log('changing to signin , profile is absent');
-//   loginButton = <View style={styles.textContainer}><Text style={{flex:1,alignItems:'center',backgroundColor: "#d50000",justifyContent:'center'}}><FontAwesome name={'sign-in'} title='login' size={20} color="white" onPress={()=>{login;console.log(""+this.props.screenProps.profile.name)}}   />Log In</Text></View>;
-// }
-
   render() {
   console.log("Again here" + this.props.screenProps.profile);
   const {login,logout,getAuthorizationHeader,profile} = this.props.screenProps;
   var loginButton,contentComponent;
-
-  //What login button to show is decided here?
-
-
 
  //What content to show is decided here?
   if (!profile) {
@@ -103,7 +51,7 @@ class HomeScreen extends React.Component {
                   <View style={styles.leftHeaderContainer}>
                         <Image
                           style={{width: 80, height: 50,backgroundColor: "white",margin:7 , marginTop:12,borderRadius:2,borderColor:"red",borderRadius: 4}}
-                          source={require('./icon2.png')}
+                          source={require('./Components/images/icon2.png')}
                           resizeMode="contain"
                         />
                   </View>

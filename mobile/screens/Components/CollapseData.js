@@ -14,10 +14,11 @@ import {
 
 import {Font} from 'expo';
 import {MaterialIcons, FontAwesome} from '@expo/vector-icons';
-import dbdata from './dbdata.json'
+//import dbdata from './dbdata.json'
 
 import Style from './Style.js';
 import Panel from './Panel.js';
+import config from '../../config';
 
 export default class CollapseData extends React.Component {
 
@@ -37,27 +38,46 @@ export default class CollapseData extends React.Component {
       Font.loadAsync(FontAwesome.font);
       var present= [];
       var notsel= [];
-      this.props.info.allergens.map((allergens) =>{
-        dbdata.map((data) =>  {
-          if(!!(data.allergen_name === allergens.allergen_name) && (data.selected === true) && ((parseInt(allergens.allergen_value,10)) > 0))
-            present= present.concat(" "+allergens.allergen_name+"\n")
-            if(!!(data.allergen_name === allergens.allergen_name) && (data.selected === false) && ((parseInt(allergens.allergen_value,10)) > 0))
-              notsel= notsel.concat(" "+allergens.allergen_name+"\n")
-          }
-      )}
-      );
-      console.log("present: "+present);
-      this.setState({uall: present});
-      console.log("others: "+notsel);
-      this.setState({oall: notsel });
-      var adds=[];
-      this.props.info.additives.map((add) =>{
-          if((parseInt(add.additive_value,10)) > 0)
-            adds= adds.concat(" "+add.additive_name+"\n")
-      }
-      );
-      console.log("additives: "+adds);
-      this.setState({addit: adds });
+
+      const {profile} = this.props.screenProps;
+      console.log("CHecking Profile"+JSON.stringify(this.props));
+      if(!!profile){
+      console.log("Hey THERE PROFILE DETAILS PRESENT >>>> TRYING TO FETCH");
+      var userHeader = new Headers();
+      userHeader.append("username", profile.name);
+      fetch(`${config.API_BASE}/api/db/allergens`,{headers: userHeader})
+      .then(response => response.json())
+      .then((data) => {
+        var dbdata = data;
+        //All old
+        this.props.info.allergens.map((allergens) =>{
+          dbdata.map((data) =>  {
+            console.log("Printing dbdata at component will mount "+ data.allergen_name +"\n");
+            if(!!(data.allergen_name === allergens.allergen_name) && (data.selected === true) && ((parseInt(allergens.allergen_value,10)) > 0))
+              present= present.concat(" "+allergens.allergen_name+"\n")
+              if(!!(data.allergen_name === allergens.allergen_name) && (data.selected === false) && ((parseInt(allergens.allergen_value,10)) > 0))
+                notsel= notsel.concat(" "+allergens.allergen_name+"\n")
+            }
+        )}
+        );
+        console.log("present: "+present);
+        this.setState({uall: present});
+        console.log("others: "+notsel);
+        this.setState({oall: notsel });
+        var adds=[];
+        this.props.info.additives.map((add) =>{
+            if((parseInt(add.additive_value,10)) > 0)
+              adds= adds.concat(" "+add.additive_name+"\n")
+        }
+        );
+        console.log("additives: "+adds);
+        this.setState({addit: adds });
+
+        //All old code
+
+     });
+    }
+
 
 
     }

@@ -1,3 +1,4 @@
+/*Unused class, used for reference*/
 import React from 'react';
 import {
   Button,

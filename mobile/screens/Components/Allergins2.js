@@ -91,7 +91,6 @@ class Allergins2 extends React.Component {
     const {profile, login, logout, getAuthorizationHeader} = this.props.screenProps;
     var userHeader = new Headers();
     userHeader.append("username", profile.name);    //lastly call the api to add the task on the server
-    userHeader.append("username","Kiran BR")
     userHeader.append('content-type', 'application/json');
     fetch(`${config.API_BASE}/api/db/allergens/${allergenName}`, {
       method: 'put',

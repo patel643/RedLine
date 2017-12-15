@@ -23,11 +23,11 @@ class ScanScreen extends React.Component {
     }
 
   render() {
-
+    console.log("At scanScreen" + JSON.stringify(this.props.screenProps));
     if(!!(this.state.code != '')){
     return (
       <View style={styles.container}>
-      <ScannedScreen code={this.state.code}  navigation={this.props.navigation} />
+      <ScannedScreen code={this.state.code}  navigation={this.props.navigation} screenProps={this.props.screenProps}/>
 
       </View>
       );

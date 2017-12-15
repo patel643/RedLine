@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 import {Font} from 'expo';
 import {MaterialIcons, FontAwesome} from '@expo/vector-icons';
-import dbdata from './dbdata.json'
+
 
 import Style from './Style.js';
 import Panel from './Panel.js';
@@ -62,7 +62,7 @@ export default class CollapsingHeader extends Component {
     return (
        <View style={styles.scrollViewContent}>
 
-          <CollapseData navigation={this.props.navigation} info={this.props.info} contains={this.state.contains}/>
+          <CollapseData navigation={this.props.navigation} info={this.props.info} contains={this.state.contains} screenProps={this.props.screenProps}/>
 
     </View>
     );

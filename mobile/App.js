@@ -18,6 +18,7 @@ import FetchDemoScreen from './screens/FetchDemoScreen';
 import ScanScreen from './screens/Components/ScanScreen.js';
 import ScannedScreen from './screens/Components/ScannedScreen.js';
 import Landing from './screens/LandingScreen.js';
+import config from './config.js';
 
 
 const ScansScreen = ({ navigation }) => (
@@ -86,13 +87,25 @@ class App extends React.Component {
 
  }
 
- // return (
- //   <NavigationContainer><RootNavigator screenProps={this.props} modifyLoginStatus={this.modifyLoginStatus}/></NavigationContainer>
- // );
+ 
 render() {
         // screenProps is one way to pass props to a navigator
         // https://reactnavigation.org/docs/navigators/navigation-options#Two-Ways-to-specify-each-option
 
+        const {profile, login, logout, getAuthorizationHeader} = this.props;
+        if(!!profile){
+        var userHeader = new Headers();
+        userHeader.append("username", profile.name);
+        fetch(`${config.API_BASE}/api/db/createuser`,{headers:userHeader})
+            .then((response) => response.json())
+            .then((responseJson) => {
+              console.log('created user', JSON.stringify(responseJson));
+
+            })
+            .catch((error) => {
+              console.error(error);
+            });
+          }
 
 
         if(this.props.profile.name){
