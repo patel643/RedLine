@@ -4,7 +4,7 @@ console.log(`loading configuration (dev mode=${__DEV__})`);
 const config = {
   // TODO: domain name of your heroku app, e.g.:
   //   API_BASE: 'https://foo-bar-baz.herokuapp.com',
-  API_BASE: 'https://aqueous-hollows-28817.herokuapp.com/',
+  API_BASE: 'https://aqueous-hollows-28817.herokuapp.com',
 
 
   // can use same client/api id as in module 3 project
