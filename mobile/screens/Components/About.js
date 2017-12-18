@@ -114,7 +114,7 @@ class About extends Component {
           <Pages>
             <Label color='#FFF59D' backgroundColor='#607D8B' text='Choosing the right product cant get simpler than this!' effect='skew' />
             <Label color='#B2FF59' backgroundColor='#546E7A' text='Mark your allergens in ALLERGENS tab' effect='rise' />
-            <Label color='#81D4FA' backgroundColor='#455A64' text='Scan to inspect!'  effect='zoom' />
+            <Label color='#81D4FA' backgroundColor='#455A64' text='Scan 12 digit UPC bar code on product to inspect!'  effect='zoom' />
             <Label color='#32CD32' backgroundColor='#37474F' text='BINGO!!!You know if it belongs in your shelf' effect='flip' />
           </Pages>
 
